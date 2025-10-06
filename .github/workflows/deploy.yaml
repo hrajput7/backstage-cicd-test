@@ -66,9 +66,6 @@ jobs:
           echo "🏗️  Building application for ${{ github.event.inputs.environment }}..."
           echo "📊 Build configuration: ${{ github.event.inputs.environment }}"
           
-          # Change to demo app directory
-          cd demo-app
-          
           # Real build commands
           npm install
           npm run build
@@ -79,9 +76,6 @@ jobs:
         run: |
           echo "🔬 Running tests for ${{ github.event.inputs.environment }} environment..."
           
-          # Change to demo app directory
-          cd demo-app
-          
           # Real test commands
           npm test
           
@@ -90,9 +84,6 @@ jobs:
       - name: 🚀 Deploy Application
         run: |
           echo "📦 Deploying to ${{ github.event.inputs.environment }} environment..."
-          
-          # Change to demo app directory
-          cd demo-app
           
           # Build Docker image
           docker build -t backstage-demo-app:${{ github.sha }} .
@@ -133,7 +124,6 @@ jobs:
           esac
           
           # Real health check - test local app
-          cd demo-app
           node src/app.js &
           APP_PID=$!
           sleep 3
