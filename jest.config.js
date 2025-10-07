@@ -1,14 +1,24 @@
-module.exports = {module.exports = {
+module.exports = {module.exports = {module.exports = {
 
-  testEnvironment: 'node',  // Only test JavaScript files in our tests directory
+  testEnvironment: 'node',
 
-  testMatch: ['**/tests/**/*.test.js'],  testMatch: ['<rootDir>/tests/**/*.test.js'],
+  testMatch: ['**/tests/**/*.test.js'],  testEnvironment: 'node',  // Only test JavaScript files in our tests directory
 
-  collectCoverageFrom: [  
+  collectCoverageFrom: [
 
-    'src/**/*.js',  // Ignore Backstage TypeScript tests
+    'src/**/*.js',  testMatch: ['**/tests/**/*.test.js'],  testMatch: ['<rootDir>/tests/**/*.test.js'],
 
-    '!src/index.js'  testPathIgnorePatterns: [
+    '!src/index.js'
+
+  ],  collectCoverageFrom: [  
+
+  coverageDirectory: 'coverage',
+
+  coverageReporters: ['text', 'lcov', 'html'],    'src/**/*.js',  // Ignore Backstage TypeScript tests
+
+  verbose: true
+
+};    '!src/index.js'  testPathIgnorePatterns: [
 
   ],    '<rootDir>/node_modules/',
 
